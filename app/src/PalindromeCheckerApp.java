@@ -12,6 +12,28 @@ public class PalindromeCheckerApp  {
         }
     }
 
+uc10
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
+
+        str = str.replaceAll("\\s+", "").toLowerCase();
+
+        int left = 0;
+        int right = str.length() - 1;
+        boolean isPalindrome = true;
+
+        while (left < right) {
+
+            if (str.charAt(left) != str.charAt(right)) {
+                isPalindrome = false;
+                break;
+            }
+
+            left++;
+            right--;
+        }
+
+        if (isPalindrome)
     static Node createList(String str) {
         Node head = null, tail = null;
 
@@ -81,6 +103,7 @@ public class PalindromeCheckerApp  {
         Node head = createList(str);
 
         if (isPalindrome(head))
+          main
             System.out.println("The string is a Palindrome");
         else
             System.out.println("The string is NOT a Palindrome");
