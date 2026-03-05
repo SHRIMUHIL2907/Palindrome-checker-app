@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class PalindromeCheckerApp {
 
@@ -6,31 +6,30 @@ public class PalindromeCheckerApp {
 
         Scanner sc = new Scanner(System.in);
 
-        // Step 1: Input
-        System.out.print("Input : ");
-        String input = sc.nextLine();
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        str = str.replaceAll("\\s+", "").toLowerCase();
 
-        // Step 2 & 3: Enqueue and Push
-        for (char c : input.toCharArray()) {
-            queue.add(c);   // FIFO
-            stack.push(c);  // LIFO
-        }
-
-        // Step 4 & 5: Compare dequeue vs pop
+        int left = 0;
+        int right = str.length() - 1;
         boolean isPalindrome = true;
 
-        while (!queue.isEmpty()) {
-            if (queue.remove() != stack.pop()) {
+        while (left < right) {
+
+            if (str.charAt(left) != str.charAt(right)) {
                 isPalindrome = false;
                 break;
             }
+
+            left++;
+            right--;
         }
 
-        // Result
-        System.out.println("Is Palindrome? : " + isPalindrome);
+        if (isPalindrome)
+            System.out.println("The string is a Palindrome");
+        else
+            System.out.println("The string is NOT a Palindrome");
 
         sc.close();
     }
